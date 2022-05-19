@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/Stars/scripts/Stars.gd" type="Script" id=1]
+[ext_resource path="res://addons/FreeCamera/scripts/FreeCamera.gd" type="Script" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+
+[node name="Space" type="Spatial"]
+
+[node name="Stars" type="Spatial" parent="."]
+script = ExtResource( 1 )
+point_size = 2.0
+coordinate_system = 1
+
+[node name="FreeCamera" type="Camera" parent="."]
+far = 500.0
+script = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Description" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Stars Demo by Divin Gavran
+
+Move: W,A,S & D
+Run: Hold Shift
+Rotation: Hold RMB & Mouse Motion"
+valign = 2
