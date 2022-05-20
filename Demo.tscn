@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/Stars/scripts/Stars.gd" type="Script" id=1]
 [ext_resource path="res://addons/FreeCamera/scripts/FreeCamera.gd" type="Script" id=2]
+[ext_resource path="res://Demo.gd" type="Script" id=3]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
 
 [node name="Space" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="Stars" type="Spatial" parent="."]
 script = ExtResource( 1 )
@@ -20,12 +22,26 @@ script = ExtResource( 2 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="Description" type="Label" parent="."]
-anchor_right = 1.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_bottom = 1.0
+margin_right = 234.0
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 314.0
+margin_right = 234.0
+margin_bottom = 334.0
+text = "Switch Coordinate System"
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+margin_top = 338.0
+margin_right = 234.0
+margin_bottom = 420.0
 text = "Stars Demo by Divin Gavran
 
 Move: W,A,S & D
 Run: Hold Shift
 Rotation: Hold RMB & Mouse Motion"
 valign = 2
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
